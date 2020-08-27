@@ -7,13 +7,7 @@ To explore analysis and visualisation approaches for Hong Kong District Councill
 
 ## Data
 
-There are three main datasets:
-
-1. Accident data (2014 - 2019)
-1. Casualty data (2014 - 2019)
-1. Vehicle data (2014 - 2019) 
-
-The data file is saved in the Excel file in `data/19codee.xls`.
+There hkdc dataset from the [hkdatasets](https://github.com/Hong-Kong-Districts-Info/hkdatasets) package.
 
 ## Analysis
 
