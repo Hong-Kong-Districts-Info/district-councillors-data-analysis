@@ -14,12 +14,12 @@ source(here("script", "read in data.R"))
 showtext::showtext_auto()
 
 # Analysis starts here ----------------------------------------------------
-## Occupation
+## Output 1 - Occupation
 df_hkdc %>%
   filter(ConstituencyCode == "A-01") %>%
   select(Occupation)
   
-## 2019 vote info
+## Output 2 - 2019 vote info
 df_hkdc <- df_hkdc %>%
   mutate(VoteInfo = paste0(Vote, " (", VotePercentage, "%)"))
 
@@ -27,30 +27,31 @@ df_hkdc %>%
   filter(ConstituencyCode == "A-01") %>%
   select(VoteInfo)
 
-## District breakdown based on camps
+## Output 3 - District breakdown based on camps
 df_hkdc_seats <- df_hkdc %>%
   group_by(District_EN, Camp) %>%
   summarise(Seats = n()) %>%
-  mutate(Camp = replace_na(Camp, "其他")) %>%
-  mutate(Color = case_when(
-    Camp == "泛民" ~ "#008B8B",
-    Camp == "其他" ~ "#B8860B",
-    Camp == "建制" ~ "#A52A2A"
-  ))
+  mutate(Camp = replace_na(Camp, "其他"))
   
-df_hkdc_seats_2 <- df_hkdc %>%
+df_for_bar_chart <- df_hkdc %>%
   select(ConstituencyCode, Constituency_EN, Constituency_ZH, District_EN, District_ZH) %>%
   left_join(df_hkdc_seats, by = "District_EN")
 
-df_hkdc_seats_2 %>%
-  filter(ConstituencyCode == "Q-28") %>%
-  ggplot(aes(x ="", y = Seats, fill = Camp)) +
-  geom_bar(width = 1, stat = "identity") +
-  ##coord_polar("y") +
-  scale_fill_manual(values = df_hkdc_seats_2$Color) + ## Yellow didn't show for 其他
-  theme_minimal()
-  
-  
-  
-
-
+df_for_bar_chart %>%
+  filter(ConstituencyCode == "C-02") %>%
+  arrange(desc(Seats)) %>%
+  rename(陣營 = Camp, 席數 = Seats) %>%
+  ggplot(aes(x = "", y = 席數, fill = 陣營)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_flip() +
+  scale_fill_manual(values = c("泛民" = "#008B8B", "其他" = "#B8860B", "建制" = "#A52A2A")) +
+  theme_minimal() +
+  theme(legend.title = element_blank(),
+        legend.position = "top",
+        legend.margin = margin(0, 0, 0, 0),
+        legend.box.spacing = unit(0, "cm"),
+        
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        
+        panel.grid = element_blank())
