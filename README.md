@@ -16,29 +16,24 @@ The analysis is implemented in R.
 ## Repo Structure
 
 ```
-|   .gitattributes 
-|   .gitignore 
-|   .Rhistory 
-|   collision-data-analysis.Rproj
-|   README.md
+|   .DS_Store
+|   .Rprofile
+|   .gitignore
+|   .README.md
+|   district-councillors-data-analysis.Rproj
+|   renv.lock
 |   
-+---data
-|       19codee.xls
-|       Accident 2014-2019.xlsx
-|       Casualty 2014-2019.xlsx
-|       Vehicle 2014-2019.xlsx
-|       
+     
 +---output
-|       number-of-vehicles-by-dc.svg
+|       Data Type.png
+|       EDA Report.html
+|       Seats by District by Camp.png
 |       
 \---script
-    |   main analysis script template.R
-    |   read in data.R
-    |   
-    \---individual-analysis
-            collision-number-of-vehicles-by-dc.R
-            initital exploration.R
-            leaflet exploration.R
+        main analysis script template.R
+        read in data.R
+        EDA.R
+        HK01 Data Visualisations.R    
             
 ```
 
