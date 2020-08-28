@@ -50,8 +50,6 @@ df_for_bar_chart %>%
         legend.position = "top",
         legend.margin = margin(0, 0, 0, 0),
         legend.box.spacing = unit(0, "cm"),
-        
         axis.title = element_blank(),
         axis.text = element_blank(),
-        
         panel.grid = element_blank())
