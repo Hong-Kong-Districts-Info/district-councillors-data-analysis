@@ -26,15 +26,9 @@ The analysis is implemented in R.
 +---renv
 |
 +---output
-|       Data Type.png
-|       EDA Report.html
-|       Seats by District by Camp.png
 |       
 \---script
-        main analysis script template.R
-        read in data.R
-        EDA.R
-        HK01 Data Visualisations.R    
+
             
 ```
 
