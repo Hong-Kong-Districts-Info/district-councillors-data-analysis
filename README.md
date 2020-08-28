@@ -23,7 +23,8 @@ The analysis is implemented in R.
 |   district-councillors-data-analysis.Rproj
 |   renv.lock
 |   
-     
++---renv
+|
 +---output
 |       Data Type.png
 |       EDA Report.html
